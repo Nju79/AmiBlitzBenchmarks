@@ -7,7 +7,7 @@ Please note that the time for creating and handling the loops must be deducted f
 
 
 # Results
-Lower is better!
+Lower is better! In the results shown for the graphic output, the times for the loops have already been deducted.
 
 Loops.ab3
 ![Loops](https://github.com/Nju79/AmiBlitzBenchmarks/assets/32636068/836eeaf2-eaef-45c5-a17f-c0ee7f92346c)
