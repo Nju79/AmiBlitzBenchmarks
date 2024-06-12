@@ -1,0 +1,314 @@
+; XTRA
+; Embedded .xtra Header
+; 
+; General Info
+; -------------------------------------------------------
+; ExePath         = "PROJEKTE:Speedtests"
+; ExeFile         = "Structures.exe"
+; CreateIcon      = 0
+; Residents       = "all.res"
+; 
+; Compiler
+; -------------------------------------------------------
+; StringBuffer    = 100000
+; MakeSmallest    = 1
+; FuncOptimize    = 1
+; Version         = 0.0.0
+; NumberOfBuilds  = 29
+; 
+; Debugger
+; -------------------------------------------------------
+; CliArgs         = ""
+; StackSize       = 8192
+; RuntimeDebug    = 0
+; DebugInfo       = 0
+; CreateDbgFile   = 0
+; OverflowCheck   = 0
+; AssemblerCheck  = 0
+; InterruptCheck  = 1
+; AutoRun         = 1
+; 
+; Editor
+; -------------------------------------------------------
+; CursorLine      = 53
+; CursorColumn    = 14
+; LabelSearch     = ""
+; LabelRemark     = 0
+; LabelAll        = 0
+; LabelPosition   = 0
+; 
+; Blitz Objects
+; -------------------------------------------------------
+; Max File        = 100
+; Max GadgetList  = 100
+; Max Shape       = 200
+; Max Bank        = 1
+; Max MenuList    = 100
+; Max GTList      = 100
+; Max Palette     = 4
+; Max BitMap      = 10
+; Max Screen      = 5
+; Max IntuiFont   = 10
+; Max BlitzFont   = 1
+; Max Window      = 100
+; Max IconInfo    = 1
+; Max MUIObject   = 50
+; Max AsyncReq    = 4
+; Max Req-Lib     = 5
+; Max GTMenuList  = 100
+; Max Console     = 5
+; Max TCPSock     = 5
+; Max Tape        = 5
+; Max Sound       = 10
+; Max MedModule   = 8
+; Max Buffer      = 10
+; Max Queue       = 10
+; Max Sprite      = 20
+; Max Module      = 5
+; Max Slice       = 10
+; Max Page        = 4
+; Max CopList     = 10
+; Max PTModule    = 5
+; Max Anim        = 10
+; Max NChunky     = 50
+; Max Chunky      = 20
+; Max Stencil     = 5
+; Max XBSound     = 10
+; /XTRA
+
+WBStartup
+SYNTAX 2
+OPTIMIZE 4
+
+StatementMaxTicks.w = 0
+StatementMinTicks.w = 0
+StatementTotalTicks.l = 0
+StatementParametersMaxTicks.w = 0
+StatementParametersMinTicks.w = 0
+StatementParametersTotalTicks.l = 0
+StatementSharedMaxTicks.w = 0
+StatementSharedMinTicks.w = 0
+StatementSharedTotalTicks.l = 0
+StatementFastMaxTicks.w = 0
+StatementFastMinTicks.w = 0
+StatementFastTotalTicks.l = 0
+StatementFastParametersMaxTicks.w = 0
+StatementFastParametersMinTicks.w = 0
+StatementFastParametersTotalTicks.l = 0
+StatementFastSharedMaxTicks.w = 0
+StatementFastSharedMinTicks.w = 0
+StatementFastSharedTotalTicks.l = 0
+GosubMaxTicks.w = 0
+GosubMinTicks.w = 0
+GosubTotalTicks.l = 0
+GotoMaxTicks.w = 0
+GotoMinTicks.w = 0
+GotoTotalTicks.l = 0
+
+
+RepeatTotalTicks.l = 0
+Counter.l = 0
+Counter2.l = 0
+k.b = 1
+i.l = 1
+j.b = 1
+m.b = 0
+
+gh.b = 0
+hi.b = 0
+ij.b = 0
+jk.b = 0
+kl.b = 0
+lm.b = 0
+goA.b = 0
+goB.b = 0
+goC.b = 0
+goD.b = 0
+goE.b = 0
+goF.b = 0
+
+INCLUDE "BenchLib.ab3"
+
+Statement TestStatement{}
+    a.b = 0
+    b.b = 0
+    c.b = 0
+    d.b = 0
+    e.b = 0
+    f.b = 0
+    a = 5
+    b = 5
+    c = 5
+    d = 5
+    e = 5
+    f = 5
+End Statement
+
+Statement TestStatementParameters{ab.b, bc.b, cd.b, de.b, ef.b, fg.b}
+    ab = 5
+    bc = 5
+    cd = 5
+    de = 5
+    ef = 5
+    fg = 5
+End Statement
+
+Statement TestStatementShared{}
+    SHARED gh
+    SHARED hi
+    SHARED ij
+    SHARED jk
+    SHARED kl
+    SHARED lm
+    gh = 5
+    hi = 5
+    ij = 5
+    jk = 5
+    kl = 5
+    lm = 5
+End Statement
+
+Statement FAST TestStatementFast{}
+    a.b = 0
+    b.b = 0
+    c.b = 0
+    d.b = 0
+    e.b = 0
+    f.b = 0
+    a = 5
+    b = 5
+    c = 5
+    d = 5
+    e = 5
+    f = 5
+End Statement
+
+Statement FAST TestStatementFastParameters{ab.b, bc.b, cd.b, de.b, ef.b, fg.b}
+    ab = 5
+    bc = 5
+    cd = 5
+    de = 5
+    ef = 5
+    fg = 5
+End Statement
+
+Statement FAST TestStatementFastShared{}
+    SHARED gh
+    SHARED hi
+    SHARED ij
+    SHARED jk
+    SHARED kl
+    SHARED lm
+    gh = 5
+    hi = 5
+    ij = 5
+    jk = 5
+    kl = 5
+    lm = 5
+End Statement
+
+Goto BenchStart
+
+GosubTest:
+    goA = 5
+    goB = 5
+    goC = 5
+    goD = 5
+    goE = 5
+    goF = 5
+Return
+
+GotoTest:
+    goA = 5
+    goB = 5
+    goC = 5
+    goD = 5
+    goE = 5
+    goF = 5
+Goto GotoLoop
+
+BenchStart:
+Cls
+NPrint "Benchmark START"
+NPrint "==============="
+For k = 1 To 10
+    NPrint "Run #" + Str$(k)
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatement{}       
+    Next i
+    Counter2 = Ticks
+    StatementMinTicks = NewMinTickRecord{StatementMinTicks, Counter, Counter2}
+    StatementMaxTicks = NewMaxTickRecord{StatementMaxTicks, Counter, Counter2}
+    StatementTotalTicks = NewTotalCount{StatementTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatementParameters{1, 1, 1, 1, 1, 1}
+    Next i
+    Counter2 = Ticks
+    StatementParametersMinTicks = NewMinTickRecord{StatementParametersMinTicks, Counter, Counter2}
+    StatementParametersMaxTicks = NewMaxTickRecord{StatementParametersMaxTicks, Counter, Counter2}
+    StatementParametersTotalTicks = NewTotalCount{StatementParametersTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatementShared{} 
+    Next i
+    Counter2 = Ticks
+    StatementSharedMinTicks = NewMinTickRecord{StatementSharedMinTicks, Counter, Counter2}
+    StatementSharedMaxTicks = NewMaxTickRecord{StatementSharedMaxTicks, Counter, Counter2}
+    StatementSharedTotalTicks = NewTotalCount{StatementSharedTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatementFast{}
+    Next i
+    Counter2 = Ticks
+    StatementFastMinTicks = NewMinTickRecord{StatementFastMinTicks, Counter, Counter2}
+    StatementFastMaxTicks = NewMaxTickRecord{StatementFastMaxTicks, Counter, Counter2}
+    StatementFastTotalTicks = NewTotalCount{StatementFastTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatementFastParameters{1, 1, 1, 1, 1, 1}
+    Next i
+    Counter2 = Ticks
+    StatementFastParametersMinTicks = NewMinTickRecord{StatementFastParametersMinTicks, Counter, Counter2}
+    StatementFastParametersMaxTicks = NewMaxTickRecord{StatementFastParametersMaxTicks, Counter, Counter2}
+    StatementFastParametersTotalTicks = NewTotalCount{StatementFastParametersTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        TestStatementFastShared{}
+    Next i
+    Counter2 = Ticks
+    StatementFastSharedMinTicks = NewMinTickRecord{StatementFastSharedMinTicks, Counter, Counter2}
+    StatementFastSharedMaxTicks = NewMaxTickRecord{StatementFastSharedMaxTicks, Counter, Counter2}
+    StatementFastSharedTotalTicks = NewTotalCount{StatementFastSharedTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 180000
+        Gosub GosubTest
+    Next i
+    Counter2 = Ticks
+    GosubMinTicks = NewMinTickRecord{GosubMinTicks, Counter, Counter2}
+    GosubMaxTicks = NewMaxTickRecord{GosubMaxTicks, Counter, Counter2}
+    GosubTotalTicks = NewTotalCount{GosubTotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    i = 0
+    GotoLoop:
+        i = i + 1
+        If i <= 180000 Then Goto GotoTest
+    Counter2 = Ticks
+    GotoMinTicks = NewMinTickRecord{GotoMinTicks, Counter, Counter2}
+    GotoMaxTicks = NewMaxTickRecord{GotoMaxTicks, Counter, Counter2}
+    GotoTotalTicks = NewTotalCount{GotoTotalTicks, Counter, Counter2}
+Next k
+NPrint "==============="
+NPrint "Statement:    Min: " + Str$(StatementMinTicks) + " Max: " + Str$(StatementMaxTicks) + " Avg: " + Str$(StatementTotalTicks / 10)
+NPrint "Stat.Para:    Min: " + Str$(StatementParametersMinTicks) + " Max: " + Str$(StatementParametersMaxTicks) + " Avg: " + Str$(StatementParametersTotalTicks / 10)
+NPrint "Stat.Shrd:    Min: " + Str$(StatementSharedMinTicks) + " Max: " + Str$(StatementSharedMaxTicks) + " Avg: " + Str$(StatementSharedTotalTicks / 10)
+NPrint "Stat.Fast:    Min: " + Str$(StatementFastMinTicks) + " Max: " + Str$(StatementFastMaxTicks) + " Avg: " + Str$(StatementFastTotalTicks / 10)
+NPrint "Stat.FaPa:    Min: " + Str$(StatementFastParametersMinTicks) + " Max: " + Str$(StatementFastParametersMaxTicks) + " Avg: " + Str$(StatementFastParametersTotalTicks / 10)
+NPrint "Stat.FaSh:    Min: " + Str$(StatementFastSharedMinTicks) + " Max: " + Str$(StatementFastSharedMaxTicks) + " Avg: " + Str$(StatementFastSharedTotalTicks / 10)
+NPrint "Gosub    :    Min: " + Str$(GosubMinTicks) + " Max: " + Str$(GosubMaxTicks) + " Avg: " + Str$(GosubTotalTicks / 10)
+NPrint "Goto     :    Min: " + Str$(GotoMinTicks) + " Max: " + Str$(GotoMaxTicks) + " Avg: " + Str$(GotoTotalTicks / 10)
+NPrint "Benchmark End"
+
+End
+
