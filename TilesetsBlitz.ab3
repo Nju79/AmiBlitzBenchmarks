@@ -1,0 +1,147 @@
+; XTRA
+; Embedded .xtra Header
+; 
+; General Info
+; -------------------------------------------------------
+; ExePath         = "PROJEKTE:Speedtests"
+; ExeFile         = "TilesetzsBlitz.exe"
+; CreateIcon      = 0
+; Residents       = "all.res"
+; 
+; Compiler
+; -------------------------------------------------------
+; StringBuffer    = 100000
+; MakeSmallest    = 1
+; FuncOptimize    = 1
+; Version         = 0.0.0
+; NumberOfBuilds  = 23
+; 
+; Debugger
+; -------------------------------------------------------
+; CliArgs         = ""
+; StackSize       = 8192
+; RuntimeDebug    = 0
+; DebugInfo       = 0
+; CreateDbgFile   = 0
+; OverflowCheck   = 0
+; AssemblerCheck  = 0
+; InterruptCheck  = 1
+; AutoRun         = 1
+; 
+; Editor
+; -------------------------------------------------------
+; CursorLine      = 47
+; CursorColumn    = 1
+; LabelSearch     = ""
+; LabelRemark     = 0
+; LabelAll        = 0
+; LabelPosition   = 0
+; 
+; Blitz Objects
+; -------------------------------------------------------
+; Max File        = 100
+; Max GadgetList  = 100
+; Max Shape       = 200
+; Max Bank        = 1
+; Max MenuList    = 100
+; Max GTList      = 100
+; Max Palette     = 4
+; Max BitMap      = 10
+; Max Screen      = 5
+; Max IntuiFont   = 10
+; Max BlitzFont   = 1
+; Max Window      = 100
+; Max IconInfo    = 1
+; Max MUIObject   = 50
+; Max AsyncReq    = 4
+; Max Req-Lib     = 5
+; Max GTMenuList  = 100
+; Max Console     = 5
+; Max TCPSock     = 5
+; Max Tape        = 5
+; Max Sound       = 10
+; Max MedModule   = 8
+; Max Buffer      = 10
+; Max Queue       = 10
+; Max Sprite      = 20
+; Max Module      = 5
+; Max Slice       = 10
+; Max Page        = 4
+; Max CopList     = 10
+; Max PTModule    = 5
+; Max Anim        = 10
+; Max NChunky     = 50
+; Max Chunky      = 20
+; Max Stencil     = 5
+; Max XBSound     = 10
+; /XTRA
+
+WBStartup
+SYNTAX 2
+OPTIMIZE 4
+BoxfMaxTicks.w = 0
+BlitMaxTicks.w = 0
+BlockMaxTicks.w = 0
+BoxfMinTicks.w = 0
+BlitMinTicks.w = 0
+BlockMinTicks.w = 0
+BoxfTotalTicks.l = 0
+BlitTotalTicks.l = 0
+BlockTotalTicks.l = 0
+Counter.l = 0
+Counter2.l = 0
+i.l = 1
+j.b = 1
+k.b = 1
+
+INCLUDE "BenchLib.ab3"
+
+BitMap 0, 320, 256, 4
+BLITZ
+InitCopList 0, 44, 256, $14, 0, 16, 0
+CreateDisplay 0
+DisplayPalette 0, 0
+DisplayBitMap 0, 0, 0, 0
+BitMapOutput 0
+Cls
+NPrint "Benchmark START"
+NPrint "==============="
+For k = 1 To 10
+    NPrint "Run #" + Str$(k)
+    Counter = Ticks 
+    For i = 1 To 30000
+        Boxf 1, 0, 15, 15, 1
+    Next i
+    Counter2 = Ticks
+    BoxfMinTicks = NewMinTickRecord{BoxfMinTicks, Counter, Counter2}
+    BoxfMaxTicks = NewMaxTickRecord{BoxfMaxTicks, Counter, Counter2}
+    BoxfTotalTicks = NewTotalCount{BoxfTotalTicks, Counter, Counter2}
+    GetaShape 1,0,0,15,15
+    Counter = Ticks 
+    For i = 1 To 30000
+        Blit 1, 0, 0
+    Next i
+    Counter2 = Ticks   
+    BlitMinTicks = NewMinTickRecord{BlitMinTicks, Counter, Counter2}
+    BlitMaxTicks = NewMaxTickRecord{BlitMaxTicks, Counter, Counter2}
+    BlitTotalTicks = NewTotalCount{BlitTotalTicks, Counter, Counter2} 
+    Free Shape 1
+    GetaShape 1,1,1,16,16
+    Counter = Ticks 
+    For i = 1 To 30000
+        Block 1, 0, 0
+    Next i
+    Counter2 = Ticks
+    BlockMinTicks = NewMinTickRecord{BlockMinTicks, Counter, Counter2}
+    BlockMaxTicks = NewMaxTickRecord{BlockMaxTicks, Counter, Counter2}
+    BlockTotalTicks = NewTotalCount{BlockTotalTicks, Counter, Counter2} 
+    Free Shape 1
+Next k
+NPrint "==============="
+NPrint "Boxf:  Min: " + Str$(BoxfMinTicks) + " Max: " + Str$(BoxfMaxTicks) + " Avg: " + Str$(BoxfTotalTicks / 10)
+NPrint "Blit:  Min: " + Str$(BlitMinTicks) + " Max: " + Str$(BlitMaxTicks) + " Avg: " + Str$(BlitTotalTicks / 10)
+NPrint "Block: Min: " + Str$(BlockMinTicks) + " Max: " + Str$(BlockMaxTicks) + " Avg: " + Str$(BlockTotalTicks / 10)
+NPrint "Benchmark End"
+MouseWait
+End
+

@@ -1,0 +1,447 @@
+; XTRA
+; Embedded .xtra Header
+; 
+; General Info
+; -------------------------------------------------------
+; ExePath         = "PROJEKTE:Speedtests"
+; ExeFile         = "PaintAmiga.exe"
+; CreateIcon      = 0
+; Residents       = "all.res"
+; 
+; Compiler
+; -------------------------------------------------------
+; StringBuffer    = 100000
+; MakeSmallest    = 1
+; FuncOptimize    = 1
+; Version         = 0.0.0
+; NumberOfBuilds  = 25
+; 
+; Debugger
+; -------------------------------------------------------
+; CliArgs         = ""
+; StackSize       = 8192
+; RuntimeDebug    = 0
+; DebugInfo       = 0
+; CreateDbgFile   = 0
+; OverflowCheck   = 0
+; AssemblerCheck  = 0
+; InterruptCheck  = 1
+; AutoRun         = 1
+; 
+; Editor
+; -------------------------------------------------------
+; CursorLine      = 337
+; CursorColumn    = 18
+; LabelSearch     = ""
+; LabelRemark     = 0
+; LabelAll        = 0
+; LabelPosition   = 0
+; 
+; Blitz Objects
+; -------------------------------------------------------
+; Max File        = 100
+; Max GadgetList  = 100
+; Max Shape       = 200
+; Max Bank        = 1
+; Max MenuList    = 100
+; Max GTList      = 100
+; Max Palette     = 4
+; Max BitMap      = 10
+; Max Screen      = 5
+; Max IntuiFont   = 10
+; Max BlitzFont   = 1
+; Max Window      = 100
+; Max IconInfo    = 1
+; Max MUIObject   = 50
+; Max AsyncReq    = 4
+; Max Req-Lib     = 5
+; Max GTMenuList  = 100
+; Max Console     = 5
+; Max TCPSock     = 5
+; Max Tape        = 5
+; Max Sound       = 10
+; Max MedModule   = 8
+; Max Buffer      = 10
+; Max Queue       = 10
+; Max Sprite      = 20
+; Max Module      = 5
+; Max Slice       = 10
+; Max Page        = 4
+; Max CopList     = 10
+; Max PTModule    = 5
+; Max Anim        = 10
+; Max NChunky     = 50
+; Max Chunky      = 20
+; Max Stencil     = 5
+; Max XBSound     = 10
+; /XTRA
+
+WBStartup
+SYNTAX 2
+OPTIMIZE 4
+
+Boxf1616MaxTicks.l = 0
+Boxf1616MinTicks.l = 0
+Boxf1616TotalTicks.l = 0
+Boxf3232MaxTicks.l = 0
+Boxf3232MinTicks.l = 0
+Boxf3232TotalTicks.l = 0
+Boxf6464MaxTicks.l = 0
+Boxf6464MinTicks.l = 0
+Boxf6464TotalTicks.l = 0
+Boxf1632MaxTicks.l = 0
+Boxf1632MinTicks.l = 0
+Boxf1632TotalTicks.l = 0
+Boxf3216MaxTicks.l = 0
+Boxf3216MinTicks.l = 0
+Boxf3216TotalTicks.l = 0
+Boxf1664MaxTicks.l = 0
+Boxf1664MinTicks.l = 0
+Boxf1664TotalTicks.l = 0
+Boxf6416MaxTicks.l = 0
+Boxf6416MinTicks.l = 0
+Boxf6416TotalTicks.l = 0
+Boxf3264MaxTicks.l = 0
+Boxf3264MinTicks.l = 0
+Boxf3264TotalTicks.l = 0
+Boxf6432MaxTicks.l = 0
+Boxf6432MinTicks.l = 0
+Boxf6432TotalTicks.l = 0
+
+Blit1616MaxTicks.l = 0
+Blit1616MinTicks.l = 0
+Blit1616TotalTicks.l = 0
+Blit3232MaxTicks.l = 0
+Blit3232MinTicks.l = 0
+Blit3232TotalTicks.l = 0
+Blit6464MaxTicks.l = 0
+Blit6464MinTicks.l = 0
+Blit6464TotalTicks.l = 0
+Blit1632MaxTicks.l = 0
+Blit1632MinTicks.l = 0
+Blit1632TotalTicks.l = 0
+Blit3216MaxTicks.l = 0
+Blit3216MinTicks.l = 0
+Blit3216TotalTicks.l = 0
+Blit1664MaxTicks.l = 0
+Blit1664MinTicks.l = 0
+Blit1664TotalTicks.l = 0
+Blit6416MaxTicks.l = 0
+Blit6416MinTicks.l = 0
+Blit6416TotalTicks.l = 0
+Blit3264MaxTicks.l = 0
+Blit3264MinTicks.l = 0
+Blit3264TotalTicks.l = 0
+Blit6432MaxTicks.l = 0
+Blit6432MinTicks.l = 0
+Blit6432TotalTicks.l = 0
+
+Block1616MaxTicks.l = 0
+Block1616MinTicks.l = 0
+Block1616TotalTicks.l = 0
+Block3232MaxTicks.l = 0
+Block3232MinTicks.l = 0
+Block3232TotalTicks.l = 0
+Block6464MaxTicks.l = 0
+Block6464MinTicks.l = 0
+Block6464TotalTicks.l = 0
+Block1632MaxTicks.l = 0
+Block1632MinTicks.l = 0
+Block1632TotalTicks.l = 0
+Block3216MaxTicks.l = 0
+Block3216MinTicks.l = 0
+Block3216TotalTicks.l = 0
+Block1664MaxTicks.l = 0
+Block1664MinTicks.l = 0
+Block1664TotalTicks.l = 0
+Block6416MaxTicks.l = 0
+Block6416MinTicks.l = 0
+Block6416TotalTicks.l = 0
+Block3264MaxTicks.l = 0
+Block3264MinTicks.l = 0
+Block3264TotalTicks.l = 0
+Block6432MaxTicks.l = 0
+Block6432MinTicks.l = 0
+Block6432TotalTicks.l = 0
+
+
+Counter.l = 0
+Counter2.l = 0
+i.l = 1
+j.b = 1
+k.b = 1
+
+INCLUDE "BenchLib.ab3"
+
+BitMap 0, 320, 256, 4
+Screen 0, 0, 0, 320, 256, 4, 0, "", 0, 0, 0
+Use Palette 0
+BitMapOutput 0
+Cls
+GetaShape 1, 0, 0, 15, 15
+GetaShape 2, 0, 0, 31, 31
+GetaShape 3, 0, 0, 63, 63
+GetaShape 4, 0, 0, 15, 31
+GetaShape 5, 0, 0, 31, 15
+GetaShape 6, 0, 0, 15, 63
+GetaShape 7, 0, 0, 63, 15
+GetaShape 8, 0, 0, 31, 63
+GetaShape 9, 0, 0, 63, 31
+
+NPrint "Benchmark START"
+NPrint "==============="
+For k = 1 To 10
+    NPrint "Run #" + Str$(k)
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 15, 15, 1
+    Next i
+    Counter2 = Ticks
+    Boxf1616MinTicks = NewMinTickRecord{Boxf1616MinTicks, Counter, Counter2}
+    Boxf1616MaxTicks = NewMaxTickRecord{Boxf1616MaxTicks, Counter, Counter2}
+    Boxf1616TotalTicks = NewTotalCount{Boxf1616TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 31, 31, 1
+    Next i
+    Counter2 = Ticks
+    Boxf3232MinTicks = NewMinTickRecord{Boxf3232MinTicks, Counter, Counter2}
+    Boxf3232MaxTicks = NewMaxTickRecord{Boxf3232MaxTicks, Counter, Counter2}
+    Boxf3232TotalTicks = NewTotalCount{Boxf3232TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 63, 63, 1
+    Next i
+    Counter2 = Ticks
+    Boxf6464MinTicks = NewMinTickRecord{Boxf6464MinTicks, Counter, Counter2}
+    Boxf6464MaxTicks = NewMaxTickRecord{Boxf6464MaxTicks, Counter, Counter2}
+    Boxf6464TotalTicks = NewTotalCount{Boxf6464TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 15, 31, 1
+    Next i
+    Counter2 = Ticks
+    Boxf1632MinTicks = NewMinTickRecord{Boxf1632MinTicks, Counter, Counter2}
+    Boxf1632MaxTicks = NewMaxTickRecord{Boxf1632MaxTicks, Counter, Counter2}
+    Boxf1632TotalTicks = NewTotalCount{Boxf1632TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 31, 15, 1
+    Next i
+    Counter2 = Ticks
+    Boxf3216MinTicks = NewMinTickRecord{Boxf3216MinTicks, Counter, Counter2}
+    Boxf3216MaxTicks = NewMaxTickRecord{Boxf3216MaxTicks, Counter, Counter2}
+    Boxf3216TotalTicks = NewTotalCount{Boxf3216TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 15, 63, 1
+    Next i
+    Counter2 = Ticks
+    Boxf1664MinTicks = NewMinTickRecord{Boxf1664MinTicks, Counter, Counter2}
+    Boxf1664MaxTicks = NewMaxTickRecord{Boxf1664MaxTicks, Counter, Counter2}
+    Boxf1664TotalTicks = NewTotalCount{Boxf1664TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 63, 15, 1
+    Next i
+    Counter2 = Ticks
+    Boxf6416MinTicks = NewMinTickRecord{Boxf6416MinTicks, Counter, Counter2}
+    Boxf6416MaxTicks = NewMaxTickRecord{Boxf6416MaxTicks, Counter, Counter2}
+    Boxf6416TotalTicks = NewTotalCount{Boxf6416TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 31, 63, 1
+    Next i
+    Counter2 = Ticks
+    Boxf3264MinTicks = NewMinTickRecord{Boxf3264MinTicks, Counter, Counter2}
+    Boxf3264MaxTicks = NewMaxTickRecord{Boxf3264MaxTicks, Counter, Counter2}
+    Boxf3264TotalTicks = NewTotalCount{Boxf3264TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Boxf 0, 0, 63, 31, 1
+    Next i
+    Counter2 = Ticks
+    Boxf6432MinTicks = NewMinTickRecord{Boxf6432MinTicks, Counter, Counter2}
+    Boxf6432MaxTicks = NewMaxTickRecord{Boxf6432MaxTicks, Counter, Counter2}
+    Boxf6432TotalTicks = NewTotalCount{Boxf6432TotalTicks, Counter, Counter2}
+
+        Counter = Ticks 
+    For i = 1 To 3000
+        Blit 1, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit1616MinTicks = NewMinTickRecord{Blit1616MinTicks, Counter, Counter2}
+    Blit1616MaxTicks = NewMaxTickRecord{Blit1616MaxTicks, Counter, Counter2}
+    Blit1616TotalTicks = NewTotalCount{Blit1616TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 2, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit3232MinTicks = NewMinTickRecord{Blit3232MinTicks, Counter, Counter2}
+    Blit3232MaxTicks = NewMaxTickRecord{Blit3232MaxTicks, Counter, Counter2}
+    Blit3232TotalTicks = NewTotalCount{Blit3232TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 3, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit6464MinTicks = NewMinTickRecord{Blit6464MinTicks, Counter, Counter2}
+    Blit6464MaxTicks = NewMaxTickRecord{Blit6464MaxTicks, Counter, Counter2}
+    Blit6464TotalTicks = NewTotalCount{Blit6464TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 4, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit1632MinTicks = NewMinTickRecord{Blit1632MinTicks, Counter, Counter2}
+    Blit1632MaxTicks = NewMaxTickRecord{Blit1632MaxTicks, Counter, Counter2}
+    Blit1632TotalTicks = NewTotalCount{Blit1632TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 5, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit3216MinTicks = NewMinTickRecord{Blit3216MinTicks, Counter, Counter2}
+    Blit3216MaxTicks = NewMaxTickRecord{Blit3216MaxTicks, Counter, Counter2}
+    Blit3216TotalTicks = NewTotalCount{Blit3216TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 6, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit1664MinTicks = NewMinTickRecord{Blit1664MinTicks, Counter, Counter2}
+    Blit1664MaxTicks = NewMaxTickRecord{Blit1664MaxTicks, Counter, Counter2}
+    Blit1664TotalTicks = NewTotalCount{Blit1664TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 7, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit6416MinTicks = NewMinTickRecord{Blit6416MinTicks, Counter, Counter2}
+    Blit6416MaxTicks = NewMaxTickRecord{Blit6416MaxTicks, Counter, Counter2}
+    Blit6416TotalTicks = NewTotalCount{Blit6416TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 8, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit3264MinTicks = NewMinTickRecord{Blit3264MinTicks, Counter, Counter2}
+    Blit3264MaxTicks = NewMaxTickRecord{Blit3264MaxTicks, Counter, Counter2}
+    Blit3264TotalTicks = NewTotalCount{Blit3264TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Blit 9, 0, 0
+    Next i
+    Counter2 = Ticks
+    Blit6432MinTicks = NewMinTickRecord{Blit6432MinTicks, Counter, Counter2}
+    Blit6432MaxTicks = NewMaxTickRecord{Blit6432MaxTicks, Counter, Counter2}
+    Blit6432TotalTicks = NewTotalCount{Blit6432TotalTicks, Counter, Counter2}
+
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 1, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block1616MinTicks = NewMinTickRecord{Block1616MinTicks, Counter, Counter2}
+    Block1616MaxTicks = NewMaxTickRecord{Block1616MaxTicks, Counter, Counter2}
+    Block1616TotalTicks = NewTotalCount{Block1616TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 2, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block3232MinTicks = NewMinTickRecord{Block3232MinTicks, Counter, Counter2}
+    Block3232MaxTicks = NewMaxTickRecord{Block3232MaxTicks, Counter, Counter2}
+    Block3232TotalTicks = NewTotalCount{Block3232TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 3, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block6464MinTicks = NewMinTickRecord{Block6464MinTicks, Counter, Counter2}
+    Block6464MaxTicks = NewMaxTickRecord{Block6464MaxTicks, Counter, Counter2}
+    Block6464TotalTicks = NewTotalCount{Block6464TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 4, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block1632MinTicks = NewMinTickRecord{Block1632MinTicks, Counter, Counter2}
+    Block1632MaxTicks = NewMaxTickRecord{Block1632MaxTicks, Counter, Counter2}
+    Block1632TotalTicks = NewTotalCount{Block1632TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 5, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block3216MinTicks = NewMinTickRecord{Block3216MinTicks, Counter, Counter2}
+    Block3216MaxTicks = NewMaxTickRecord{Block3216MaxTicks, Counter, Counter2}
+    Block3216TotalTicks = NewTotalCount{Block3216TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 6, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block1664MinTicks = NewMinTickRecord{Block1664MinTicks, Counter, Counter2}
+    Block1664MaxTicks = NewMaxTickRecord{Block1664MaxTicks, Counter, Counter2}
+    Block1664TotalTicks = NewTotalCount{Block1664TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 7, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block6416MinTicks = NewMinTickRecord{Block6416MinTicks, Counter, Counter2}
+    Block6416MaxTicks = NewMaxTickRecord{Block6416MaxTicks, Counter, Counter2}
+    Block6416TotalTicks = NewTotalCount{Block6416TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 8, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block3264MinTicks = NewMinTickRecord{Block3264MinTicks, Counter, Counter2}
+    Block3264MaxTicks = NewMaxTickRecord{Block3264MaxTicks, Counter, Counter2}
+    Block3264TotalTicks = NewTotalCount{Block3264TotalTicks, Counter, Counter2}
+    Counter = Ticks 
+    For i = 1 To 3000
+        Block 9, 0, 0
+    Next i
+    Counter2 = Ticks
+    Block6432MinTicks = NewMinTickRecord{Block6432MinTicks, Counter, Counter2}
+    Block6432MaxTicks = NewMaxTickRecord{Block6432MaxTicks, Counter, Counter2}
+    Block6432TotalTicks = NewTotalCount{Block6432TotalTicks, Counter, Counter2}
+Next k
+NPrint "==============="
+Cls
+Locate 0, 0
+NPrint "Boxf1616:  Min: " + Str$(Boxf1616MinTicks) + " Max: " + Str$(Boxf1616MaxTicks) + " Avg: " + Str$(Boxf1616TotalTicks / 10)
+NPrint "Boxf3232:  Min: " + Str$(Boxf3232MinTicks) + " Max: " + Str$(Boxf3232MaxTicks) + " Avg: " + Str$(Boxf3232TotalTicks / 10)
+NPrint "Boxf6464:  Min: " + Str$(Boxf6464MinTicks) + " Max: " + Str$(Boxf6464MaxTicks) + " Avg: " + Str$(Boxf6464TotalTicks / 10)
+NPrint "Boxf1632:  Min: " + Str$(Boxf1632MinTicks) + " Max: " + Str$(Boxf1632MaxTicks) + " Avg: " + Str$(Boxf1632TotalTicks / 10)
+NPrint "Boxf3216:  Min: " + Str$(Boxf3216MinTicks) + " Max: " + Str$(Boxf3216MaxTicks) + " Avg: " + Str$(Boxf3216TotalTicks / 10)
+NPrint "Boxf1664:  Min: " + Str$(Boxf1664MinTicks) + " Max: " + Str$(Boxf1664MaxTicks) + " Avg: " + Str$(Boxf1664TotalTicks / 10)
+NPrint "Boxf6416:  Min: " + Str$(Boxf6416MinTicks) + " Max: " + Str$(Boxf6416MaxTicks) + " Avg: " + Str$(Boxf6416TotalTicks / 10)
+NPrint "Boxf3264:  Min: " + Str$(Boxf3264MinTicks) + " Max: " + Str$(Boxf3264MaxTicks) + " Avg: " + Str$(Boxf3264TotalTicks / 10)
+NPrint "Boxf6432:  Min: " + Str$(Boxf6432MinTicks) + " Max: " + Str$(Boxf6432MaxTicks) + " Avg: " + Str$(Boxf6432TotalTicks / 10)
+NPrint "Blit1616:  Min: " + Str$(Blit1616MinTicks) + " Max: " + Str$(Blit1616MaxTicks) + " Avg: " + Str$(Blit1616TotalTicks / 10)
+NPrint "Blit3232:  Min: " + Str$(Blit3232MinTicks) + " Max: " + Str$(Blit3232MaxTicks) + " Avg: " + Str$(Blit3232TotalTicks / 10)
+NPrint "Blit6464:  Min: " + Str$(Blit6464MinTicks) + " Max: " + Str$(Blit6464MaxTicks) + " Avg: " + Str$(Blit6464TotalTicks / 10)
+NPrint "Blit1632:  Min: " + Str$(Blit1632MinTicks) + " Max: " + Str$(Blit1632MaxTicks) + " Avg: " + Str$(Blit1632TotalTicks / 10)
+NPrint "Blit3216:  Min: " + Str$(Blit3216MinTicks) + " Max: " + Str$(Blit3216MaxTicks) + " Avg: " + Str$(Blit3216TotalTicks / 10)
+NPrint "Blit1664:  Min: " + Str$(Blit1664MinTicks) + " Max: " + Str$(Blit1664MaxTicks) + " Avg: " + Str$(Blit1664TotalTicks / 10)
+NPrint "Blit6416:  Min: " + Str$(Blit6416MinTicks) + " Max: " + Str$(Blit6416MaxTicks) + " Avg: " + Str$(Blit6416TotalTicks / 10)
+NPrint "Blit3264:  Min: " + Str$(Blit3264MinTicks) + " Max: " + Str$(Blit3264MaxTicks) + " Avg: " + Str$(Blit3264TotalTicks / 10)
+NPrint "Blit6432:  Min: " + Str$(Blit6432MinTicks) + " Max: " + Str$(Blit6432MaxTicks) + " Avg: " + Str$(Blit6432TotalTicks / 10)
+NPrint "Block1616:  Min: " + Str$(Block1616MinTicks) + " Max: " + Str$(Block1616MaxTicks) + " Avg: " + Str$(Block1616TotalTicks / 10)
+NPrint "Block3232:  Min: " + Str$(Block3232MinTicks) + " Max: " + Str$(Block3232MaxTicks) + " Avg: " + Str$(Block3232TotalTicks / 10)
+NPrint "Block6464:  Min: " + Str$(Block6464MinTicks) + " Max: " + Str$(Block6464MaxTicks) + " Avg: " + Str$(Block6464TotalTicks / 10)
+NPrint "Block1632:  Min: " + Str$(Block1632MinTicks) + " Max: " + Str$(Block1632MaxTicks) + " Avg: " + Str$(Block1632TotalTicks / 10)
+NPrint "Block3216:  Min: " + Str$(Block3216MinTicks) + " Max: " + Str$(Block3216MaxTicks) + " Avg: " + Str$(Block3216TotalTicks / 10)
+NPrint "Block1664:  Min: " + Str$(Block1664MinTicks) + " Max: " + Str$(Block1664MaxTicks) + " Avg: " + Str$(Block1664TotalTicks / 10)
+NPrint "Block6416:  Min: " + Str$(Block6416MinTicks) + " Max: " + Str$(Block6416MaxTicks) + " Avg: " + Str$(Block6416TotalTicks / 10)
+NPrint "Block3264:  Min: " + Str$(Block3264MinTicks) + " Max: " + Str$(Block3264MaxTicks) + " Avg: " + Str$(Block3264TotalTicks / 10)
+NPrint "Block6432:  Min: " + Str$(Block6432MinTicks) + " Max: " + Str$(Block6432MaxTicks) + " Avg: " + Str$(Block6432TotalTicks / 10)
+NPrint "Benchmark End"
+MouseWait
+End
+

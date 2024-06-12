@@ -1,0 +1,149 @@
+; XTRA
+; Embedded .xtra Header
+; 
+; General Info
+; -------------------------------------------------------
+; ExePath         = "PROJEKTE:Speedtests"
+; ExeFile         = "Loops.exe"
+; CreateIcon      = 0
+; Residents       = "all.res"
+; 
+; Compiler
+; -------------------------------------------------------
+; StringBuffer    = 100000
+; MakeSmallest    = 1
+; FuncOptimize    = 1
+; Version         = 0.0.0
+; NumberOfBuilds  = 21
+; 
+; Debugger
+; -------------------------------------------------------
+; CliArgs         = ""
+; StackSize       = 8192
+; RuntimeDebug    = 0
+; DebugInfo       = 0
+; CreateDbgFile   = 0
+; OverflowCheck   = 0
+; AssemblerCheck  = 0
+; InterruptCheck  = 1
+; AutoRun         = 1
+; 
+; Editor
+; -------------------------------------------------------
+; CursorLine      = 67
+; CursorColumn    = 23
+; LabelSearch     = ""
+; LabelRemark     = 0
+; LabelAll        = 0
+; LabelPosition   = 0
+; 
+; Blitz Objects
+; -------------------------------------------------------
+; Max File        = 100
+; Max GadgetList  = 100
+; Max Shape       = 200
+; Max Bank        = 1
+; Max MenuList    = 100
+; Max GTList      = 100
+; Max Palette     = 4
+; Max BitMap      = 10
+; Max Screen      = 5
+; Max IntuiFont   = 10
+; Max BlitzFont   = 1
+; Max Window      = 100
+; Max IconInfo    = 1
+; Max MUIObject   = 50
+; Max AsyncReq    = 4
+; Max Req-Lib     = 5
+; Max GTMenuList  = 100
+; Max Console     = 5
+; Max TCPSock     = 5
+; Max Tape        = 5
+; Max Sound       = 10
+; Max MedModule   = 8
+; Max Buffer      = 10
+; Max Queue       = 10
+; Max Sprite      = 20
+; Max Module      = 5
+; Max Slice       = 10
+; Max Page        = 4
+; Max CopList     = 10
+; Max PTModule    = 5
+; Max Anim        = 10
+; Max NChunky     = 50
+; Max Chunky      = 20
+; Max Stencil     = 5
+; Max XBSound     = 10
+; /XTRA
+
+WBStartup
+SYNTAX 2
+OPTIMIZE 4
+ForMaxTicks.w = 0
+WhileMaxTicks.w = 0
+RepeatMaxTicks.w = 0
+GotoMaxTicks.w = 0
+ForMinTicks.w = 0
+WhileMinTicks.w = 0
+RepeatMinTicks.w = 0
+GotoMinTicks.w = 0
+ForTotalTicks.l = 0
+WhileTotalTicks.l = 0
+RepeatTotalTicks.l = 0
+GotoTotalTicks.l = 0
+Counter.l = 0
+Counter2.l = 0
+k.b = 1
+i.l = 1
+j.b = 1
+
+INCLUDE "BenchLib.ab3"
+
+Cls
+NPrint "Benchmark START"
+NPrint "==============="
+For k = 1 To 10
+    NPrint "Run #" + Str$(k)
+    Counter = Ticks 
+    i = 0
+    Repeat
+        i = i + 1
+    Until i = 180000
+    Counter2 = Ticks
+    RepeatMinTicks = NewMinTickRecord{RepeatMinTicks, Counter, Counter2}
+    RepeatMaxTicks = NewMaxTickRecord{RepeatMaxTicks, Counter, Counter2}
+    RepeatTotalTicks = NewTotalCount{RepeatTotalTicks, Counter, Counter2}
+    Counter = Ticks    
+    For i = 1 To 180000
+    Next i
+    Counter2 = Ticks
+    ForMinTicks = NewMinTickRecord{ForMinTicks, Counter, Counter2}
+    ForMaxTicks = NewMaxTickRecord{ForMaxTicks, Counter, Counter2}
+    ForTotalTicks = NewTotalCount{ForTotalTicks, Counter, Counter2}
+    Counter = Ticks
+    i = 0
+    While i <= 180000
+        i = i + 1
+    Wend
+    Counter2 = Ticks
+    WhileMinTicks = NewMinTickRecord{WhileMinTicks, Counter, Counter2}
+    WhileMaxTicks = NewMaxTickRecord{WhileMaxTicks, Counter, Counter2}
+    WhileTotalTicks = NewTotalCount{WhileTotalTicks, Counter, Counter2}
+    Counter = Ticks
+    i = 0
+    GotoLoop
+        i = i + 1
+        If i <= 180000 Then Goto GotoLoop
+    Counter2 = Ticks
+    GotoMinTicks = NewMinTickRecord{GotoMinTicks, Counter, Counter2}
+    GotoMaxTicks = NewMaxTickRecord{GotoMaxTicks, Counter, Counter2}
+    GotoTotalTicks = NewTotalCount{GotoTotalTicks, Counter, Counter2}
+Next k
+NPrint "==============="
+NPrint "For:    Min: " + Str$(ForMinTicks) + " Max: " + Str$(ForMaxTicks) + " Avg: " + Str$(ForTotalTicks / 10)
+NPrint "While:  Min: " + Str$(WhileMinTicks) + " Max: " + Str$(WhileMaxTicks) + " Avg: " + Str$(WhileTotalTicks / 10)
+NPrint "Repeat: Min: " + Str$(RepeatMinTicks) + " Max: " + Str$(RepeatMaxTicks) + " Avg: " + Str$(RepeatTotalTicks / 10)
+NPrint "Goto  : Min: " + Str$(GotoMinTicks) + " Max: " + Str$(GotoMaxTicks) + " Avg: " + Str$(GotoTotalTicks / 10)
+NPrint "Benchmark End"
+End
+
